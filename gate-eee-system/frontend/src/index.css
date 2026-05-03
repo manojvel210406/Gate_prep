@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: #F5F5F5;
+    color: #1a1a2e;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-800 text-white px-6 py-2.5 rounded-xl font-medium 
+           hover:bg-primary-700 active:scale-95 transition-all duration-200 
+           shadow-sm hover:shadow-md;
+  }
+
+  .btn-gold {
+    @apply bg-gold-400 text-primary-900 px-6 py-2.5 rounded-xl font-semibold
+           hover:bg-gold-500 active:scale-95 transition-all duration-200
+           shadow-sm hover:shadow-md;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary-800 text-primary-800 px-6 py-2.5 rounded-xl 
+           font-medium hover:bg-primary-50 active:scale-95 transition-all duration-200;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-card p-6 transition-all duration-200;
+  }
+
+  .card-hover {
+    @apply card hover:shadow-card-hover hover:-translate-y-0.5 cursor-pointer;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border border-gray-200 
+           focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent
+           bg-white text-gray-800 placeholder-gray-400
+           transition-all duration-200;
+  }
+
+  .sidebar-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600
+           hover:bg-primary-50 hover:text-primary-800 transition-all duration-150
+           cursor-pointer font-medium text-sm;
+  }
+
+  .sidebar-item.active {
+    @apply bg-primary-800 text-white shadow-sm;
+  }
+
+  .mastery-strong { @apply text-emerald-700 bg-emerald-50; }
+  .mastery-medium { @apply text-amber-700 bg-amber-50; }
+  .mastery-weak { @apply text-red-700 bg-red-50; }
+  .mastery-not-started { @apply text-gray-500 bg-gray-100; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: #c5d8ee; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #0A3D62; }
+
+/* Progress bar animation */
+.progress-bar {
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Health score ring */
+.health-ring {
+  transform-origin: center;
+  transform: rotate(-90deg);
+  transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Shimmer skeleton */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Chart tooltip override */
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  border-radius: 12px !important;
+  border: 1px solid #c5d8ee !important;
+  box-shadow: 0 4px 20px rgba(10,61,98,0.12) !important;
+}
+
+/* Mobile nav */
+@media (max-width: 768px) {
+  .mobile-hidden { display: none; }
+}
+
+/* Streak fire animation */
+@keyframes fireFlicker {
+  0%, 100% { transform: scale(1) rotate(-2deg); }
+  50% { transform: scale(1.1) rotate(2deg); }
+}
+.fire-icon { animation: fireFlicker 0.8s ease-in-out infinite; }
