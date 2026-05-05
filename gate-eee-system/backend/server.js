@@ -34,10 +34,14 @@ app.use(express.urlencoded({ extended: true }));
 if (process.env.NODE_ENV === 'development') app.use(morgan('dev'));
 
 // ─── Database Connection ──────────────────────────────────────────────────
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/gate_eee_db')
-  .then(() => console.log('✅ MongoDB connected'))
-  .catch(err => console.error('❌ MongoDB connection error:', err));
+import mongoose from "mongoose";
 
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("✅ MongoDB Connected"))
+.catch(err => console.error("❌ MongoDB Error:", err));
 // ─── Routes ───────────────────────────────────────────────────────────────
 app.use('/api/auth',       require('./routes/auth'));
 app.use('/api/study-logs', require('./routes/studyLogs'));
