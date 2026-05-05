@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
+    "build": "npm run build --prefix frontend",
     "seed": "node utils/seeder.js"
   },
   "dependencies": {
